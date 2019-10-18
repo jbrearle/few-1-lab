@@ -9,7 +9,7 @@ let tip20Button: HTMLButtonElement;
 let tip15Button: HTMLButtonElement;
 
 let tipAmount = 20;
-// if negative number make the border red
+
 export function runApp() {
 
     tip10Button = document.getElementById('btnTip10') as HTMLButtonElement;
@@ -24,9 +24,6 @@ export function runApp() {
 
     inputCheckAmt = document.getElementById('inputCheckAmt') as HTMLInputElement;
     inputCheckAmt.addEventListener('keyup', updateField);
-    // if (parseInt(inputCheckAmt.value) < 0) {
-
-    // }
     billAmt = document.getElementById('billAmt') as HTMLSpanElement;
 
     tipPercentage = document.getElementById('tipPercentage') as HTMLSpanElement;
@@ -38,15 +35,18 @@ export function runApp() {
 
     tip20Button.click();
 }
-function updateField(e: any) {
-    billAmt.innerText = e.target.value;
-    tipPercentage.innerText = e.target.value;
-    amtOfTip.innerText = e.target.value;
-    totalPaid.innerText = e.target.value;
+function updateField() {
+    billAmt.innerText = inputCheckAmt.value;
+    if (parseInt(inputCheckAmt.value) < 0) {
+        inputCheckAmt.classList.add('is-invalid');
+    } else {
+        inputCheckAmt.classList.remove('is-invalid');
+    }
+
+    updateTipPercentage(tipAmount.toString());
 }
 
 function updateTipPercentage(amount: string) {
-    amount = amount || '0';
     tipAmount = parseInt(amount, 10);
     tipPercentage.innerText = amount;
     calculateTip(billAmt.innerText, tipPercentage.innerText);
