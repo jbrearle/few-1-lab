@@ -1,7 +1,7 @@
 let billAmt: HTMLSpanElement;
-let tipPercentage: NodeListOf<HTMLDivElement>;
-let amtOfTip: NodeListOf<HTMLDivElement>;
-let totalPaid: NodeListOf<HTMLDivElement>;
+let tipPercentage: HTMLSpanElement;
+let amtOfTip: HTMLSpanElement;
+let totalPaid: HTMLSpanElement;
 let inputCheckAmt: HTMLInputElement;
 
 // if negative number make the border red
@@ -12,12 +12,15 @@ export function runApp() {
 
     // }
     billAmt = document.getElementById('billAmt') as HTMLSpanElement;
-    const tipPercentage = document.getElementById('tipPercentage') as HTMLElement;
-    const amtOfTip = document.getElementById('amtOfTip') as HTMLElement;
-    const totalPaid = document.getElementById('totalPaid') as HTMLElement;
+    tipPercentage = document.getElementById('tipPercentage') as HTMLSpanElement;
+    amtOfTip = document.getElementById('amtOfTip') as HTMLSpanElement;
+    totalPaid = document.getElementById('totalPaid') as HTMLSpanElement;
 }
 function updateField(e: any) {
     billAmt.innerText = e.target.value;
+    tipPercentage.innerText = e.target.value;
+    amtOfTip.innerText = e.target.value;
+    totalPaid.innerText = e.target.value;
 
 
 }
